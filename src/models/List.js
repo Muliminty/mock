@@ -41,7 +41,8 @@ const generateRandomList = (
 ) => {
   const mockConfig = {};
   mockConfig[`list|${pageSize}`] = [mockTemplate];
-
+  console.log('mockConfig: ', mockConfig);
+  console.log('Mock.mock(mockConfig).list: ', Mock.mock(mockConfig).list);
   return Mock.mock(mockConfig).list;
 };
 
@@ -57,11 +58,12 @@ const defaultTableHeader = [
 const defaultPageSize = 10;
 const defaultTotalPage = 5;
 module.exports = {
-  getList: (pageNum, pageSize) => {
+  getList: ({ pageNum, pageSize, ...param }) => {
     let dataList = generateRandomList(pageSize);
+    console.log('dataList: ', dataList);
     return {
       list: dataList,
-      total: dataList.length,
+      total: dataList && dataList.length,
       pageNum,
       pageSize,
     }; // 返回默认格式的数据

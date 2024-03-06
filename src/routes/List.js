@@ -5,7 +5,8 @@ const mockData = require('../models/List'); // 导入 mockData 模块，用于�
 // GET 请求处理程序，获取列表数据
 // http://localhost:3000/api/mock/list?pageNum=1&pageSize=20
 router.get('/list', (req, res) => {
-  const list = mockData.getList(); // 调用 mockData 模块中的 getList 方法获取列表数据
+  console.log('req: ', req);
+  const list = mockData.getList({ ...req.query }); // 调用 mockData 模块中的 getList 方法获取列表数据
   res.json(list); // 将列表数据以 JSON 格式返回
 });
 
