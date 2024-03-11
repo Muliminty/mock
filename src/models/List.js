@@ -1,16 +1,5 @@
 const Mock = require('mockjs');
 
-// 生成随机列表数据的函数，接受参数进行配置
-// const generateRandomList = (pageSize, totalPage) => {
-//   return Mock.mock({
-//     [`list|${pageSize}`]: [{
-//       'id|+1': 1,
-//       'name': '@cname',
-//       'age|18-60': 1
-//     }]
-//   }).list;
-// };
-
 /**
  * 生成随机列表数据
  * @param {number} pageSize - 列表页大小
