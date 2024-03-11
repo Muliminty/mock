@@ -43,42 +43,18 @@ const defaultTableHeader = [
   { key: 'name', title: 'Name' },
   { key: 'age', title: 'Age' }
 ];
-// 初始化数据列表，默认每页 10 条数据，总共 5 页
-const defaultPageSize = 10;
-const defaultTotalPage = 5;
 module.exports = {
   getList: ({ pageNum, pageSize, mockTemplate, ...param }) => {
     let dataList = generateRandomList(pageSize, mockTemplate);
-    console.log('dataList: ', dataList);
     return {
-      list: dataList,
-      total: dataList && dataList.length,
-      pageNum,
-      pageSize,
+      code: 'ZCWO0000',
+      data: {
+        list: dataList,
+        total: dataList && dataList.length,
+        pageNum,
+        pageSize,
+      },
+      message: 'Success'
     }; // 返回默认格式的数据
   },
-  addToList: newItem => {
-    newItem.id = dataList.length + 1; // 自动生成 ID
-    dataList.push(newItem);
-    return newItem;
-  },
-  deleteFromList: id => {
-    dataList = dataList.filter(item => item.id !== id); // 根据 ID 进行过滤删除
-    return { message: 'Item deleted successfully' };
-  },
-  updateListItem: (id, updatedItem) => {
-    dataList = dataList.map(item => item.id === id ? { ...item, ...updatedItem } : item); // 更新指定 ID 的项
-    return updatedItem;
-  },
-  regenerateList: (pageSize, totalPage) => {
-    dataList = generateRandomList(pageSize, totalPage * pageSize); // 重新生成随机列表数据
-    return dataList;
-  },
-  getTableHeader: () => {
-    return defaultTableHeader; // 返回默认表头数据
-  },
-  setTableHeader: newTableHeader => {
-    defaultTableHeader = newTableHeader; // 更新表头数据
-    return defaultTableHeader;
-  }
 };
