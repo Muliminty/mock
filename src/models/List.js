@@ -58,8 +58,8 @@ const defaultTableHeader = [
 const defaultPageSize = 10;
 const defaultTotalPage = 5;
 module.exports = {
-  getList: ({ pageNum, pageSize, ...param }) => {
-    let dataList = generateRandomList(pageSize);
+  getList: ({ pageNum, pageSize, mockTemplate, ...param }) => {
+    let dataList = generateRandomList(pageSize, mockTemplate);
     console.log('dataList: ', dataList);
     return {
       list: dataList,
